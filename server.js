@@ -5,7 +5,14 @@ dotEnv.config();
 
 const app = express();
 
-app.get('/', (req, res, next) => {
+const myMiddleware = (req, res, next) => {
+	console.log("Hey What's up?");
+	next();
+};
+
+// app.use(myMiddleware);
+
+app.get('/', myMiddleware, (req, res, next) => {
 	res.send('Hello from Node API server');
 });
 
