@@ -3,14 +3,14 @@ const dotEnv = require('dotenv');
 const cors = require('cors');
 const dbConnection = require('./database/connection');
 
-
 dotEnv.config();
 
 const app = express();
 
-// ~~~~~~~~~~~~~ DB connectivity ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// DB connectivity
 dbConnection();
 
+// cors middleware
 app.use(cors());
 
 //~~~~~~~~~~~~~~~~ Application-level middleware ~~~~~~~~~~~~~~~~~~
@@ -20,13 +20,14 @@ app.use(cors());
 // };
 
 // app.use(myMiddleware);
-
 //~~~~~~~~~~~~~~~~ Built-in middleware ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // request payload middleware
 
 app.use(express.json());
+
 app.use(express.urlencoded({extended:true}));
 
+app.use('/api/v1/product', require('./routes/productRoutes'));
 
 app.get('/',(req, res, next) => {
 	res.send('Hello from Node API server');
