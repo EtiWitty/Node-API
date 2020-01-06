@@ -5,7 +5,15 @@ const productSchema = new mongoose.Schema ({
 	price: Number,
 	brand: String
 }, {
-	timestamps: true
+	timestamps: true,
+	toObject: {
+		transform: (doc, ret, options) =>{
+			ret.id = ret._id;
+			delete ret._id;
+			delete ret._v;
+			return ret;
+		}
+	}
 });
 
 module.exports = mongoose.model('product', productSchema);
