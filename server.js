@@ -1,19 +1,29 @@
 const express = require('express');
 const dotEnv = require('dotenv');
+const cors = require('cors');
 
 dotEnv.config();
 
 const app = express();
 
-// Application-level middleware
-const myMiddleware = (req, res, next) => {
-	console.log("Hey What's up?");
-	next();
-};
+app.use(cors());
+
+//~~~~~~~~~~~~~~~~ Application-level middleware ~~~~~~~~~~~~~~~~~~
+// const myMiddleware = (req, res, next) => {
+// 	console.log("Hey What's up?");
+// 	next();
+// };
 
 // app.use(myMiddleware);
 
-app.get('/', myMiddleware, (req, res, next) => {
+//~~~~~~~~~~~~~~~~ Built-in middleware ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// request payload middleware
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+
+app.get('/',(req, res, next) => {
 	res.send('Hello from Node API server');
 });
 
