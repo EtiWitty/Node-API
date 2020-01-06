@@ -1,10 +1,15 @@
 const express = require('express');
 const dotEnv = require('dotenv');
 const cors = require('cors');
+const dbConnection = require('./database/connection');
+
 
 dotEnv.config();
 
 const app = express();
+
+// ~~~~~~~~~~~~~ DB connectivity ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbConnection();
 
 app.use(cors());
 
