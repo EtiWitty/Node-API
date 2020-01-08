@@ -5,7 +5,8 @@ module.exports = {
 		body: {}
 	},
 	productMassage: {
-		PRODUCT_CREATED: 'Product created successfully!'
+		PRODUCT_CREATED: 'Product created successfully!',
+		PRODUCT_FETCHED: 'Product feteched successfully!'
 	},
 	requestValidationMessage: {
 		BAD_REQUEST: 'Invalid fields'
