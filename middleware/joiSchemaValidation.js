@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi');
-const contsnats = require('../constants');
+const constants = require('../constants');
 
 const validateObjectSchema = (data, schema) => {
 	const result = Joi.validate(data, schema, { convert: false });
